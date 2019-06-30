@@ -2,6 +2,9 @@
 package com.revature.servlets;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -41,6 +44,7 @@ public class SupervisorServlet extends HttpServlet {
 			return;
 		}
 		String name = request.getPathInfo();
+		
 		if (name == null || name.substring(1) == "") {
 
 			//User user = (User) sess.getAttribute("user");
@@ -54,23 +58,50 @@ public class SupervisorServlet extends HttpServlet {
 			String result = "";
 
 			for (ReimburseForm r : formList) {
-				result +="formnumber: " + r.getReimbursementId() + " ";
+				result +="form number: " + r.getReimbursementId() + " ";
 			}
-			response.getWriter().write("<h1>" + result + "</h1>");
+			//response.getWriter().write("<h1>" + result + "</h1>");
 			response.getWriter().append(result);
 			return;
 		}
-//		System.out.println(name.substring(1));
-//		ReimburseForm a = rd..getAnimalByName(name.substring(1));
-//		System.out.println(a);
+		
+		System.out.println(name.substring(1));
+		Integer id = Integer.parseInt(name.substring(1));
+		ReimburseForm a = rd.getFormById(id);
+		
+		
+		
+//		System.out.println("the dates are " + startDate + endDate);
+		
+		
+		
+		System.out.println("heyyyt "+a);
 		/*
 		 * response.getWriter().write( "{\"name\":\"" + a.getName() +
 		 * "\", \"breed\":\""+a.getBreed() + "\", \"color\":\""+a.getColor() +
 		 * "\", \"age\":"+a.getAge() + "}" );
 		 */
-	//	ObjectMapper om = new ObjectMapper();
-	//	String animalString = om.writeValueAsString(a);
-	//	response.getWriter().write(animalString);
+//		response.getWriter().write( "{\"name\":\"" + a.getStartdate() +
+//			  "\", \"breed\":\""+a.getEnddate() + "}" );
+		
+		ObjectMapper om = new ObjectMapper();
+		//2019-06-28
+		
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		om.setDateFormat(df);
+		
+		
+		//response.getWriter().write
+	
+		//String dateString = om.writeValueAsString(a.getEnddate());
+		String formString = om.writeValueAsString(a);
+		//String total = formString + startDate + endDate;
+		System.out.println("this is "+formString);
+		response.getWriter().write(formString);
+		
+		//om.setd
+		
+		
 
 	}
 
@@ -85,13 +116,60 @@ public class SupervisorServlet extends HttpServlet {
 			response.sendRedirect("login");
 			return;
 		}
-		String body = request.getReader().readLine();
-		System.out.println(body);
-		ObjectMapper om = new ObjectMapper();
+		
+		String ap = "approved";
+		String dn = "denied";
+		
+		String formid = request.getParameter("formid");
+		Integer fid = Integer.parseInt(formid);
+		
+		String status = request.getParameter("status");
+		
+		
+		if (status.equals(ap)) {
+			rd.supervisorApproveForm(fid);
+			response.getWriter().write("Form approved");
+		} else {
+			System.out.println("hello");
+		}
+		
+		//User user = rd.loginUser(username, password);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		String name = request.getPathInfo();
+//		System.out.println(name.substring(1));
+	//	Integer id = Integer.parseInt(name.substring(1));
+		//ReimburseForm a = rd.getFormById(id);
+		
+		//updateForm(a);
+		
+		
+		
+//		String body = request.getReader().readLine();
+//		System.out.println(body);
+	//	ObjectMapper om = new ObjectMapper();
 	//	Animal a = om.readValue(body, Animal.class);
 	//	a.setOwner((User)sess.getAttribute("user"));
 	//	as.createAnimal(a);
-		response.getWriter().write("Animal successfuly created");
+	//	response.getWriter().write("Animal successfuly created");
 	}
 
 }

@@ -47,6 +47,7 @@ private UserService userService = new UserServiceFake();
 
 		UserDao ud = new UserDaoImpl();
 		User u = ud.getUserByName(username);
+		System.out.println(u);
 		
 		if (user == null) {
 			resp.setStatus(401);
@@ -55,9 +56,15 @@ private UserService userService = new UserServiceFake();
 			HttpSession sess = req.getSession(true);
 			sess.setAttribute("user", user);
 			sess.setAttribute("userid", u.getUserId());
+			
 			//if user.type ==x, then different page
 //			resp.sendRedirect("home");
-			resp.sendRedirect("supervisor");
+		//	resp.getWriter().write("<h1>Welcome " +  user.getTitle() + " </h1><br><a href=\"formfind.html\">view forms</a><br><a href=\"logout\">logout</a>");			
+			System.out.println(u.getTitle());
+			if (u.getTitle().equals("Sales Supervisor")) {
+				resp.getWriter().write("<h1>Welcome " +  u.getTitle() + " </h1><br><a href=\"formfind.html\">view forms</a><br><a href=\"logout\">logout</a>");			
+			}
+			//resp.sendRedirect("supervisor");
 		//	resp.getWriter().write("Successful Login");
 		//	req.getRequestDispatcher("home").forward(req, resp);
 		}

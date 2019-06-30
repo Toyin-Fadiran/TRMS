@@ -312,6 +312,10 @@ public class ReimburseForm {
 		this.work_justify = work_justify;
 		//this.event_attachment = event_attachment;
 	}
+
+	public ReimburseForm() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 

@@ -31,6 +31,8 @@ private UserService us = new UserServiceFake();
 		//User user = us.loginUser(username, password);
 		if (user != null) {
 			resp.getWriter().write("<h1>Welcome " + user.getUsername() + " </h1><br><a href=\"logout\"/>logout</a>");
+			
+				
 		}
 	}
 	

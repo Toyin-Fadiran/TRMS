@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.revature.pojo.ReimburseForm;
 import com.revature.pojo.User;
 import com.revature.util.ConnectionFactory;
@@ -97,6 +98,42 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		}
 
 		return formList;
+	}
+
+	@Override
+	public ReimburseForm getFormById(Integer reimburseid) {
+		ReimburseForm ret = null;
+		
+		String sql = "select * from reimbursement_trms where reimbursementid =" + reimburseid;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			if (rs.next()) {
+				ret = new ReimburseForm(rs.getInt("reimbursementId"),rs.getInt("employeeid"), rs.getDate("startdate"), rs.getDate("enddate"), rs.getString("form_time"),
+						rs.getString("address_location"), rs.getString("description"), rs.getDouble("course_cost"), rs.getString("status"),
+						rs.getString("grading_format"), rs.getString("events"), rs.getString("work_justify"));
+				
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ret;
+	}
+
+	@Override
+	public void supervisorApproveForm(Integer formid) {
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("update reimbursement_trms set status = 'pending-2' where reimbursementid = ?");
+			
+			pstmt.setInt(1, formid);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 //public static void main(String[] args) {
