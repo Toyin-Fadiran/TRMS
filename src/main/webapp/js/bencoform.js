@@ -14,7 +14,7 @@ function getForms() {
 		}
 	}
 	
-	xhr.open("GET", "/TRMS/supervisor", true);
+	xhr.open("GET", "/TRMS/benco", true);
 	
 	xhr.send();
 	
@@ -34,7 +34,7 @@ function getFormById() {
 		}
 	}
 	
-	xhr.open("GET", "/TRMS/supervisor/" + formName, true);
+	xhr.open("GET", "/TRMS/benco/" + formName, true);
 	
 	xhr.send();
 }

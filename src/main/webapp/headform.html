@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>FormFinder</title>
+</head>
+<body>
+	<div>
+		<h1>My forms</h1>
+		<br>
+		<p id="form-list">Loading...</p>
+	</div>
+	<div>
+		<input type="text" id="form-id-input" placeholder="form id" /> <br>
+		<p id="my-form"></p>
+		<br>
+		<button id="get-form">Choose Form</button>
+	</div>
+	<div>
+            <form action="head" method="post">
+                    <!-- the name must match the getParameter in servlet -->					
+            <input type = "text" name="formid" placeholder="enter form id choice"/>
+            <input type = "text" name="status" placeholder = "supervisor status decision">
+            <input type="submit" value="Update Status"/>
+            </form>
+
+
+		<!-- <h3>Update form</h3>
+		<input id="status" placeholder="supervisor status decision"> 
+		<br>
+		<input id="formid" placeholder="enter form id choice"> 
+		<br>
+		<input id="age" type="number" placeholder="enter animal age">
+		<br>
+		<button id="updatestatus">Update Status</button>
+		<p id="result"></p> -->
+    </div>
+    
+    
+
+
+	<script type="text/javascript" src="js/headform.js"></script>
+</body>
+</html>

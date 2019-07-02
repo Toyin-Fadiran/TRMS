@@ -12,8 +12,16 @@ public interface ReimbursementDao {
 	
 	public List<ReimburseForm> viewFormBySupervisorId(Integer id);
 	
+	public List<ReimburseForm> viewFormByHead();
+	
+	public List<ReimburseForm> viewFormByBenco();
+	
 	public ReimburseForm getFormById(Integer reimburseid);
 	
 	public void supervisorApproveForm (Integer formid);
+	
+	public void headApproveForm(Integer formid);
+	
+	public void bencoApproveForm(Integer formid);
 
 }

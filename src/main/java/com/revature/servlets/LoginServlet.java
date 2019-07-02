@@ -15,61 +15,63 @@ import com.revature.services.UserService;
 import com.revature.services.UserServiceFake;
 
 public class LoginServlet extends HttpServlet {
-/**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2862417159526639895L;
-private UserService userService = new UserServiceFake();
-	
-	
+	private UserService userService = new UserServiceFake();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		HttpSession sess = req.getSession(false);
-		if(sess !=null && sess.getAttribute("user") != null) {
-			//user is logged in already
-//			resp.sendRedirect("home");
+		if (sess != null && sess.getAttribute("user") != null) {
+			// user is logged in already
+			//			resp.sendRedirect("home");
 			resp.sendRedirect("supervisor");
 		} else {
-			//if user.type ==x, then different page
+			// if user.type ==x, then different page
 			resp.sendRedirect("login.html");
 		}
-		
-		
+
 	}
-	
-	//know this
+
+	// know this
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		//getting this from Login form from client
+		// getting this from Login form from client
 		String username = req.getParameter("username");
-		String password= req.getParameter("password");
+		String password = req.getParameter("password");
 		User user = userService.loginUser(username, password);
-		
 
 		UserDao ud = new UserDaoImpl();
 		User u = ud.getUserByName(username);
 		System.out.println(u);
-		
+
 		if (user == null) {
 			resp.setStatus(401);
 			resp.getWriter().write("Failed Login");
 		} else {
+			// this allows us to use throughout web app, HTTPP is stateless remember.
 			HttpSession sess = req.getSession(true);
 			sess.setAttribute("user", user);
 			sess.setAttribute("userid", u.getUserId());
-			
-			//if user.type ==x, then different page
-//			resp.sendRedirect("home");
-		//	resp.getWriter().write("<h1>Welcome " +  user.getTitle() + " </h1><br><a href=\"formfind.html\">view forms</a><br><a href=\"logout\">logout</a>");			
-			System.out.println(u.getTitle());
-			if (u.getTitle().equals("Sales Supervisor")) {
-				resp.getWriter().write("<h1>Welcome " +  u.getTitle() + " </h1><br><a href=\"formfind.html\">view forms</a><br><a href=\"logout\">logout</a>");			
+			sess.setAttribute("title", u.getTitle());
+
+			// System.out.println(u.getTitle());
+			if (u.getTitle().contains("Supervisor")) {
+				resp.getWriter().write("<h1>Welcome " + u.getTitle()
+				+ " </h1><br><a href=\"formfind.html\">view forms</a><br><a href=\"logout\">logout</a>");
+			} else if ((u.getTitle().contains("Head"))) {
+				resp.getWriter().write("<h1>Welcome " + u.getTitle() + " </h1><br><a href=\"headform.html\">view forms</a><br><a href=\"logout\">logout</a>");
+				//resp.getWriter().write("Head");
+
+			} else if ((u.getTitle().contains("Benco"))) {
+				resp.getWriter().write("<h1>Welcome " + u.getTitle() + " </h1><br><a href=\"bencoform.html\">view forms</a><br><a href=\"logout\">logout</a>");
+
+			} else {
+				resp.getWriter().write("<h1>Welcome " + u.getTitle()
+				+ " </h1><br><a href=\"rform.html\">fill form</a><br><a href=\"logout\">logout</a>");
 			}
-			//resp.sendRedirect("supervisor");
-		//	resp.getWriter().write("Successful Login");
-		//	req.getRequestDispatcher("home").forward(req, resp);
 		}
-		
-		
-		
+
 	}
 }

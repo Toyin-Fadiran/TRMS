@@ -1,6 +1,9 @@
 /**
  * 
  */
+/**
+ * 
+ */
 
 function getForms() {
 	
@@ -14,7 +17,7 @@ function getForms() {
 		}
 	}
 	
-	xhr.open("GET", "/TRMS/supervisor", true);
+	xhr.open("GET", "/TRMS/head", true);
 	
 	xhr.send();
 	
@@ -34,7 +37,7 @@ function getFormById() {
 		}
 	}
 	
-	xhr.open("GET", "/TRMS/supervisor/" + formName, true);
+	xhr.open("GET", "/TRMS/head/" + formName, true);
 	
 	xhr.send();
 }
