@@ -21,32 +21,10 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	public void insertForm(ReimburseForm r) {
 		try {
 			conn.setAutoCommit(false);
-			// String query = "insert into
-			// reimbursement_trms(employeeid,form_date,form_time,address_location,"
-			// +
-			// "description,course_cost,grading_format,events,work_justify,event_attachment)
-			// values"
-			// + "(?,?,?,?,?,?,?,?,?,?)";
-
-			// String query = "insert into reimbursement_trms(address_location,"
-			// + "description,course_cost,grading_format,events,startdate, enddate,
-			// form_time) values"
-			// + "(?,?,?,?,?,?,?,?)";
-
 			String query = "insert into reimbursement_trms(address_location,"
 					+ "description,course_cost,grading_format,events,startdate, enddate, employeeid) values"
 					+ "(?,?,?,?,?,?,?,?)";
 			PreparedStatement pstmt = conn.prepareStatement(query);
-			// pstmt.setInt(1, r.getEmployeeID());
-			// pstmt.setTimestamp(2, r.getForm_date());
-			// pstmt.setTime(3, r.getForm_time());
-			// pstmt.setString(4, r.getAddress());
-			// pstmt.setString(5, r.getDescription());
-			// pstmt.setDouble(6, r.getCourse_cost());
-			// pstmt.setString(7, r.getGrading_format());
-			// pstmt.setString(8, r.getEvents());
-			// pstmt.setString(9, r.getGrading_format());
-			// pstmt.setString(10, r.getEvent_attachment());
 
 			pstmt.setString(1, r.getAddress());
 			pstmt.setString(2, r.getDescription());
@@ -60,9 +38,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			pstmt.execute();
 			conn.commit();
 			conn.setAutoCommit(true);
-			// LoggingUtil.info("Submitted a form");
+			
 		} catch (SQLException e) {
-			// LoggingUtil.info("SQLException");
+			
 			e.printStackTrace();
 		}
 
@@ -74,9 +52,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		
 		String sql = "select * from reimbursement_trms where status = 'pending-1'";
 
-//		String sql = "select * from reimbursement_trms where employeeid in "
-//				+ "(select e.employeeid from user_trms e inner join user_trms s "
-//				+ "on e.reportsto = s.employeeid where e.reportsto =" + id + ");";
+
 
 		Statement stmt;
 		try {
@@ -94,7 +70,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			conn.commit();
 			conn.setAutoCommit(true);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -117,7 +93,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return ret;
@@ -132,7 +108,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			pstmt.setInt(1, formid);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -147,7 +123,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			pstmt.setInt(1, formid);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -162,7 +138,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			pstmt.setInt(1, formid);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -171,10 +147,12 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	@Override
 	public List<ReimburseForm> viewFormByHead() {
 		ArrayList<ReimburseForm> formList = new ArrayList<>();
+		
+		String sql = "select * from reimbursement_trms where status = 'pending-2'";
 
-		String sql = "select * from reimbursement_trms where status = 'pending-2' "
-				+ "and employeeid in (select e.employeeid from user_trms e "
-				+ "inner join user_trms s on e.reportsto = s.employeeid)";
+//		String sql = "select * from reimbursement_trms where status = 'pending-2' "
+//				+ "and employeeid in (select e.employeeid from user_trms e "
+//				+ "inner join user_trms s on e.reportsto = s.employeeid)";
 
 		Statement stmt;
 		try {
@@ -192,7 +170,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			conn.commit();
 			conn.setAutoCommit(true);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -202,10 +180,12 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	@Override
 	public List<ReimburseForm> viewFormByBenco() {
 		ArrayList<ReimburseForm> formList = new ArrayList<>();
+		
+		String sql = "select * from reimbursement_trms where status = 'pending-3'";
 
-		String sql = "select * from reimbursement_trms where status = 'pending-3' "
-				+ "and employeeid in (select e.employeeid from user_trms e "
-				+ "inner join user_trms s on e.reportsto = s.employeeid)";
+//		String sql = "select * from reimbursement_trms where status = 'pending-3' "
+//				+ "and employeeid in (select e.employeeid from user_trms e "
+//				+ "inner join user_trms s on e.reportsto = s.employeeid)";
 
 		Statement stmt;
 		try {
@@ -223,7 +203,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			conn.commit();
 			conn.setAutoCommit(true);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -252,7 +232,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			conn.commit();
 			conn.setAutoCommit(true);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -269,7 +249,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			pstmt.setInt(2, formid);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -297,7 +277,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			conn.commit();
 			conn.setAutoCommit(true);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -313,7 +293,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			pstmt.setInt(1, formid);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 

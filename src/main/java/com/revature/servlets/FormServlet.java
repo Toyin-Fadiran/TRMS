@@ -94,7 +94,8 @@ public class FormServlet extends HttpServlet {
 		
 		us.updateAvailable(pending, userid);
 		rf.insertForm(new ReimburseForm((Integer)sess.getAttribute("userid"), sd, ed, address, description, cost, gradeFormat, events));
-
+		resp.getWriter().write("<h1>Successfully Submitted Form!</h1>" + " </h1><br><a href=\"rform.html\">fill form</a><br> <a href=\"formupdate.html\">Update Forms<br><a href=\"logout\">logout</a>");
+		
 	}
 
 }

@@ -116,7 +116,11 @@ public class SupervisorServlet extends HttpServlet {
 		
 		if (status.equals(ap)) {
 			rd.supervisorApproveForm(fid);
-			response.getWriter().write("Form approved");
+		//	response.getWriter().write("Form approved");
+			response.getWriter().write("<h1>Form Successfully Approved!</h1>" + " <br><a href=\"formfind.html\">Supervisor approval</a><br><a href=\"logout\">logout</a>");
+//			resp.getWriter().write("<h1>Welcome " + u.getTitle()
+//			+ " </h1><br><a href=\"rform.html\">fill form</a><br> <a href=\"formupdate.html\">Update Forms<br><a href=\"logout\">logout</a>");
+		
 		} else {
 			System.out.println("hello");
 		}

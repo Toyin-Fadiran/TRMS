@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">	
 <head>
-<meta charset="ISO-8859-1">
-<title>FormFinder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FormFinder</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
 </head>
 <body>
 	<div>
-		<h1>My forms</h1>
+		<h1>final approval form</h1>
 		<br>
 		<p id="form-list">Loading...</p>
 	</div>
@@ -20,7 +23,14 @@
 		<form action="finalbenco" method="post">
                     <!-- the name must match the getParameter in servlet -->					
             <input type = "text" name="formid" placeholder="enter form id choice"/>
-            <input type = "text" name="status" placeholder = "supervisor status decision">
+            <div class="form-group">
+				<label for="exampleFormControlSelect1">Status decision</label> 
+				<select class="form-control"
+					id="exampleFormControlSelect1" name="status">
+					<option value="approved">approved</option>
+					<option value="denied">denied</option>
+				</select>
+			</div>
             <input type="submit" value="Update Status"/>
             </form>
 	</div>

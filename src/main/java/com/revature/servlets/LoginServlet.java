@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 			// System.out.println(u.getTitle());
 			if (u.getTitle().contains("Supervisor")) {
 				resp.getWriter().write("<h1>Welcome " + u.getTitle()
-				+ " </h1><br><a href=\"formfind.html\">view forms</a><br><a href=\"logout\">logout</a>");
+				+ " </h1><br><a href=\"formfind.html\">Supervisor Approval</a><br><a href=\"logout\">logout</a>");
 			} else if ((u.getTitle().contains("Head"))) {
 				resp.getWriter().write("<h1>Welcome " + u.getTitle() + " </h1><br><a href=\"headform.html\">view forms</a><br><a href=\"logout\">logout</a>");
 				//resp.getWriter().write("Head");
