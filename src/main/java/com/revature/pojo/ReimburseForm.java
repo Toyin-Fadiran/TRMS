@@ -31,6 +31,16 @@ public class ReimburseForm {
 	private String work_justify;
 	
 	private String event_attachment;
+	
+	private String proof;
+
+	public String getProof() {
+		return proof;
+	}
+
+	public void setProof(String proof) {
+		this.proof = proof;
+	}
 
 	public Integer getReimbursementId() {
 		return reimbursementId;
@@ -136,13 +146,15 @@ public class ReimburseForm {
 		this.event_attachment = event_attachment;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "ReimburseForm [reimbursementId=" + reimbursementId + ", employeeID=" + employeeID + ", startdate="
 				+ startdate + ", enddate=" + enddate + ", form_time=" + form_time + ", address=" + address
 				+ ", description=" + description + ", course_cost=" + course_cost + ", status=" + status
 				+ ", grading_format=" + grading_format + ", events=" + events + ", work_justify=" + work_justify
-				+ ", event_attachment=" + event_attachment + "]";
+				+ ", event_attachment=" + event_attachment + ", proof=" + proof + "]";
 	}
 
 	@Override
@@ -261,7 +273,7 @@ public class ReimburseForm {
 	}
 
 	public ReimburseForm(Integer employeeID, Date startdate, Date enddate, String time, String address,
-			String description, Double cost, String grade, String events) {
+			String description, Double cost, String proof, String events) {
 		super();
 		this.employeeID = employeeID;
 		this.startdate = startdate;
@@ -272,13 +284,14 @@ public class ReimburseForm {
 		this.course_cost = cost;
 		//this.status = status;
 		//this.grading_format = grading_format;
+		this.proof = proof;
 		this.events = events;
 		//this.work_justify = work_justify;
 		//this.event_attachment = event_attachment;
 	}
 	
 	public ReimburseForm(Integer employeeID, Date startdate, Date enddate, String address,
-			String description, Double cost, String grade, String events) {
+			String description, Double cost, String grading_format, String events) {
 		super();
 		this.employeeID = employeeID;
 		this.startdate = startdate;
@@ -288,7 +301,7 @@ public class ReimburseForm {
 		this.description = description;
 		this.course_cost = cost;
 		//this.status = status;
-		//this.grading_format = grading_format;
+		this.grading_format = grading_format;
 		this.events = events;
 		//this.work_justify = work_justify;
 		//this.event_attachment = event_attachment;
@@ -313,6 +326,29 @@ public class ReimburseForm {
 		//this.event_attachment = event_attachment;
 	}
 
+	
+	public ReimburseForm(Integer reimburseId, Integer employeeID, Date startdate, Date enddate, String form_time, String address,
+			String description, Double course_cost, String status, String grading_format, String events,
+			String work_justify, String proof) {
+		super();
+		this.reimbursementId = reimburseId;
+		this.employeeID = employeeID;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.form_time = form_time;
+		this.address = address;
+		this.description = description;
+		this.course_cost = course_cost;
+		this.status = status;
+		this.grading_format = grading_format;
+		this.events = events;
+		this.work_justify = work_justify;
+		this.proof = proof;
+		//this.event_attachment = event_attachment;
+	}
+	
+	
+	
 	public ReimburseForm() {
 		// TODO Auto-generated constructor stub
 	}

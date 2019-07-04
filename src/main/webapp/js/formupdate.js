@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 
 function getForms() {
 	
@@ -14,7 +12,7 @@ function getForms() {
 		}
 	}
 	
-	xhr.open("GET", "/TRMS/benco", true);
+	xhr.open("GET", "/TRMS/update", true);
 	
 	xhr.send();
 	
@@ -34,7 +32,7 @@ function getFormById() {
 		}
 	}
 	
-	xhr.open("GET", "/TRMS/benco/" + formName, true);
+	xhr.open("GET", "/TRMS/supervisor/" + formName, true);
 	
 	xhr.send();
 }
@@ -50,8 +48,8 @@ function displayForm (form) {
         "Work Justify: " + form.work_justify + "<br>" +
         "Status: " + form.status + "<br>" +
 		"Course Cost: " + form.course_cost + "<br>" +
-        "Grading Format: " + form.grade_format + "<br>" +
-        "form time" + form.form_time
+        "Grading Format: " + form.grading_format + "<br>" +
+        "form time" + form.form_time 
 
 	document.getElementById("my-form").innerHTML = formString;
 }
@@ -60,7 +58,7 @@ function displayForm (form) {
 
 let Form = function(reimbursementId, employeeID, 
     startdate, enddate, form_time, address, description,
-    course_cost, status, grade_format, events, work_justify  ) {
+    course_cost, status, grading_format, events, work_justify  ) {
             this.reimbursementId = reimbursementId;
             this.employeeID = employeeID;
             this.startdate = startdate;
@@ -70,7 +68,7 @@ let Form = function(reimbursementId, employeeID,
             this.description = description;
             this.course_cost = course_cost;
             this.status = status;
-            this.grading_format = grade_format;
+            this.grading_format = grading_format;
             this.events = events;
             this.work_justify = work_justify;
 
@@ -80,6 +78,6 @@ let Form = function(reimbursementId, employeeID,
 window.onload = function () {
 	
 	getForms();
-	 document.getElementById("get-form").addEventListener("click", getFormById);
+	// document.getElementById("get-form").addEventListener("click", getFormById);
 	// document.getElementById("updatestatus").addEventListener("click", postAnimal);
 }

@@ -15,12 +15,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.ReimbursementDao;
 import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.pojo.ReimburseForm;
+import com.revature.services.ReimburseService;
+import com.revature.services.ReimburseServiceImpl;
 
 public class HeadServlet extends HttpServlet {
 	
 	
 	private static final long serialVersionUID = -3091866423899639820L;
-	ReimbursementDao rd = new ReimbursementDaoImpl();
+	//ReimbursementDao rd = new ReimbursementDaoImpl();
+	ReimburseService rd = new ReimburseServiceImpl();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -103,43 +106,8 @@ public class HeadServlet extends HttpServlet {
 			System.out.println("hello");
 		}
 		
-		//User user = rd.loginUser(username, password);
+	
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-//		String name = request.getPathInfo();
-//		System.out.println(name.substring(1));
-	//	Integer id = Integer.parseInt(name.substring(1));
-		//ReimburseForm a = rd.getFormById(id);
-		
-		//updateForm(a);
-		
-		
-		
-//		String body = request.getReader().readLine();
-//		System.out.println(body);
-	//	ObjectMapper om = new ObjectMapper();
-	//	Animal a = om.readValue(body, Animal.class);
-	//	a.setOwner((User)sess.getAttribute("user"));
-	//	as.createAnimal(a);
-	//	response.getWriter().write("Animal successfuly created");
 	}
-
 }

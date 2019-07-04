@@ -23,5 +23,23 @@ public interface ReimbursementDao {
 	public void headApproveForm(Integer formid);
 	
 	public void bencoApproveForm(Integer formid);
+	
+	
+	
+	
+	public List<ReimburseForm> viewFormByEmployeeId(Integer id);
+	
+	
+	public void updateProof(Integer formid, String proof);
 
+	
+	
+	public List<ReimburseForm> viewFinalFormByBenco();
+	
+	
+	
+	
+	public void bencoFinalApproveForm(Integer formid); 
+	
+	
 }

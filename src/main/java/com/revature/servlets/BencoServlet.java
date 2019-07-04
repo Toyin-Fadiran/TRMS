@@ -15,6 +15,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.ReimbursementDao;
 import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.pojo.ReimburseForm;
+import com.revature.services.ReimburseService;
+import com.revature.services.ReimburseServiceImpl;
 
 /**
  * Servlet implementation class BencoServlet
@@ -22,7 +24,8 @@ import com.revature.pojo.ReimburseForm;
 public class BencoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	ReimbursementDao rd = new ReimbursementDaoImpl();
+	
+	ReimburseService rd = new ReimburseServiceImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,12 +38,6 @@ public class BencoServlet extends HttpServlet {
 
 		if (name == null || name.substring(1) == "") {
 
-			//User user = (User) sess.getAttribute("user");
-			Integer userid = (Integer) sess.getAttribute("userid");
-
-			//this comment is designed to test git upstream
-
-
 			List<ReimburseForm> viewList = rd.viewFormByBenco();
 			System.out.println("this is our " + viewList);
 
@@ -49,7 +46,7 @@ public class BencoServlet extends HttpServlet {
 			for (ReimburseForm r : viewList) {
 				result +="form number: " + r.getReimbursementId() + " ";
 			}
-			//response.getWriter().write("<h1>" + result + "</h1>");
+			
 			response.getWriter().append(result);
 			return;
 		}
@@ -59,22 +56,21 @@ public class BencoServlet extends HttpServlet {
 		ReimburseForm a = rd.getFormById(id);
 
 		ObjectMapper om = new ObjectMapper();
-		//2019-06-28
+		
 
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		om.setDateFormat(df);
 
 
-		//response.getWriter().write
+		
 
-		//String dateString = om.writeValueAsString(a.getEnddate());
+		
 		String formString = om.writeValueAsString(a);
-		//String total = formString + startDate + endDate;
+		
 		System.out.println("this is "+formString);
 		response.getWriter().write(formString);
 
-		//om.setd
-
+		
 	}
 
 	/**
@@ -105,8 +101,7 @@ public class BencoServlet extends HttpServlet {
 			System.out.println("hello");
 		}
 
-		//User user = rd.loginUser(username, password);
-
+	
 
 
 

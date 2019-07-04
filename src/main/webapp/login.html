@@ -1,17 +1,28 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">	
 <head>
-<meta charset="ISO-8859-1">
-<title>My Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+	
 </head>
 <body>
-	<h3>this is a login page</h3>
-	<br>
-	<form action="login" method="post">
-				<!-- the name must match the getParameter in servlet -->					
-		<input type = "text" name="username" placeholder="enter username here"/>
-	<input type = "password" name="password" placeholder = "enter password herer">
-	<input type="submit" value="login to my webpage"/>
-	</form>
+    <h1>LOGIN PAGE</h1>
+        <form action="login" method="post">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputUserName">Username</label>
+                    <input type="text" class="form-control" name="username" id="inputUserName" placeholder="Username here">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Password</label>
+                    <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="Password here">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+              </form>
 </body>
 </html>

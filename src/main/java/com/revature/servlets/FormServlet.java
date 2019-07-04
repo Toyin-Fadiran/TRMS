@@ -16,14 +16,16 @@ import com.revature.dao.ReimbursementDao;
 import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.pojo.ReimburseForm;
 import com.revature.services.UserService;
-import com.revature.services.UserServiceFake;
+import com.revature.services.UserServiceImpl;
 
 public class FormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UserService userService = new UserServiceFake();
+	private UserService userService = new UserServiceImpl();
 	
 	//private UserService userService = new UserServiceFake();
 	ReimbursementDao rf = new ReimbursementDaoImpl();
+	
+	UserService us = new UserServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -70,24 +72,28 @@ public class FormServlet extends HttpServlet {
 		
 		String address = req.getParameter("address");
 		Double cost = Double.parseDouble(req.getParameter("cost"));
-		String grade = req.getParameter("grade-format");
+		String gradeFormat = req.getParameter("grade-format");
 		String description = req.getParameter("description");
 		String work_justify = req.getParameter("description");
 		
-		//User user = userService.loginUser(username, password);
 		
 		HttpSession sess = req.getSession(false);
 		if (sess == null || sess.getAttribute("user") ==null) {
 			req.getRequestDispatcher("login").forward(req, resp);
 			return;
 		}
-	//	User user = (User) sess.getAttribute("userid");
+	
+		Double pending	= us.calculatePend(cost, events);
+		Integer userid = (Integer) sess.getAttribute("userid");
+			
+		us.addPending(pending, userid);
+	
 		
-		//HttpSession sess = req.getSession();
-		//sess.setAttribute("userid", User.);
+		//THIS IS INITIAL AVAILABLE FROM DATABASE
+//		Double avail = us.getAvailable(userid);
 		
-		//rf.insertForm(new ReimburseForm((Integer)sess.getAttribute("userid"), sd, ed, time, address, description, cost, grade, events));
-		rf.insertForm(new ReimburseForm((Integer)sess.getAttribute("userid"), sd, ed, address, description, cost, grade, events));
+		us.updateAvailable(pending, userid);
+		rf.insertForm(new ReimburseForm((Integer)sess.getAttribute("userid"), sd, ed, address, description, cost, gradeFormat, events));
 
 	}
 

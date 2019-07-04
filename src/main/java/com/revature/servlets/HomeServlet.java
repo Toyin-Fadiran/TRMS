@@ -10,11 +10,11 @@ import javax.servlet.http.HttpSession;
 
 import com.revature.pojo.User;
 import com.revature.services.UserService;
-import com.revature.services.UserServiceFake;
+import com.revature.services.UserServiceImpl;
 
 public class HomeServlet extends HttpServlet{
 
-private UserService us = new UserServiceFake();
+private UserService us = new UserServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{

@@ -69,4 +69,25 @@
     <servlet-name>BencoServlet</servlet-name>
     <url-pattern>/benco/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateFormServlet</display-name>
+    <servlet-name>UpdateFormServlet</servlet-name>
+    <servlet-class>com.revature.servlets.UpdateFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateFormServlet</servlet-name>
+    <url-pattern>/update/*</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <description></description>
+    <display-name>FinalBencoServlet</display-name>
+    <servlet-name>FinalBencoServlet</servlet-name>
+    <servlet-class>com.revature.servlets.FinalBencoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FinalBencoServlet</servlet-name>
+    <url-pattern>/finalbenco/*</url-pattern>
+  </servlet-mapping>
 </web-app>

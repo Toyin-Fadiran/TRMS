@@ -12,14 +12,14 @@ import com.revature.dao.UserDao;
 import com.revature.dao.UserDaoImpl;
 import com.revature.pojo.User;
 import com.revature.services.UserService;
-import com.revature.services.UserServiceFake;
+import com.revature.services.UserServiceImpl;
 
 public class LoginServlet extends HttpServlet {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2862417159526639895L;
-	private UserService userService = new UserServiceFake();
+	private UserService userService = new UserServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -35,16 +35,17 @@ public class LoginServlet extends HttpServlet {
 
 	}
 
-	// know this
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		// getting this from Login form from client
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		User user = userService.loginUser(username, password);
 
-		UserDao ud = new UserDaoImpl();
-		User u = ud.getUserByName(username);
-		System.out.println(u);
+		//UserDao ud = new UserDaoImpl();
+		
+		User u = userService.getUserByName(username);
+		
+		//System.out.println(u);
 
 		if (user == null) {
 			resp.setStatus(401);
@@ -65,11 +66,11 @@ public class LoginServlet extends HttpServlet {
 				//resp.getWriter().write("Head");
 
 			} else if ((u.getTitle().contains("Benco"))) {
-				resp.getWriter().write("<h1>Welcome " + u.getTitle() + " </h1><br><a href=\"bencoform.html\">view forms</a><br><a href=\"logout\">logout</a>");
+				resp.getWriter().write("<h1>Welcome " + u.getTitle() + " </h1><br><a href=\"bencoform.html\">view forms</a><br><a href=\"finalbencoform.html\">view final approval forms</a><br><a href=\"logout\">logout</a>");
 
 			} else {
 				resp.getWriter().write("<h1>Welcome " + u.getTitle()
-				+ " </h1><br><a href=\"rform.html\">fill form</a><br><a href=\"logout\">logout</a>");
+				+ " </h1><br><a href=\"rform.html\">fill form</a><br> <a href=\"formupdate.html\">Update Forms<br><a href=\"logout\">logout</a>");
 			}
 		}
 

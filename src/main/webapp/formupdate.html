@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>My forms</h1>
+        <br>
+        <p id="form-list">Loading...</p>
+      </div>
+  <form action="update" method="post">
+    <h1 class="form-group">
+      <label for="exampleFormControlInput1">Enter Your Proof of Pass</label>
+    </h1>
+    <input type = "text" name="formid" placeholder="enter form id choice"/>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Proof</label>
+      <select class="form-control" id="exampleFormControlSelect1" name="proof">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+        <option>PASS</option>
+        <option>FAIL</option>
+      </select>
+    </div>
+    <input type="submit" value="Update Proof"/>
+  </form>
+</body>
+<script type="text/javascript" src="js/formupdate.js"></script>
+</html>
