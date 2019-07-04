@@ -24,5 +24,7 @@ public interface UserDao {
 	public void setAward(Integer userID, Double award);
 	
 	public void addFinalPending(Double pending, Integer userid);
+	
+	public Double getAwarded(Integer userid);
 
 }

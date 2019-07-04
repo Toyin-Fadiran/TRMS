@@ -213,6 +213,28 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
+	@Override
+	public Double getAwarded(Integer userid) {
+		Double ret = null;
+
+		try {
+			// PreparedStatement pstmt = conn.prepareStatement("update project_car set
+			// offer_flag = ? where carid = ?");
+			PreparedStatement pstmt = conn.prepareStatement("select awarded from user_trms where employeeid = ?;");
+			pstmt.setInt(1, userid);
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				ret = rs.getDouble("awarded");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return ret;
+	}
+
 //	public static void main(String[] args) {
 //		UserDaoImpl udi = new UserDaoImpl();
 //		System.out.println(udi.getUserByName("toyin"));

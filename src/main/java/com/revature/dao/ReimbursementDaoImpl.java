@@ -71,10 +71,12 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	@Override
 	public List<ReimburseForm> viewFormBySupervisorId(Integer id) {
 		ArrayList<ReimburseForm> formList = new ArrayList<>();
+		
+		String sql = "select * from reimbursement_trms where status = 'pending-1'";
 
-		String sql = "select * from reimbursement_trms where employeeid in "
-				+ "(select e.employeeid from user_trms e inner join user_trms s "
-				+ "on e.reportsto = s.employeeid where e.reportsto =" + id + ");";
+//		String sql = "select * from reimbursement_trms where employeeid in "
+//				+ "(select e.employeeid from user_trms e inner join user_trms s "
+//				+ "on e.reportsto = s.employeeid where e.reportsto =" + id + ");";
 
 		Statement stmt;
 		try {
@@ -277,8 +279,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	public List<ReimburseForm> viewFinalFormByBenco() {
 		ArrayList<ReimburseForm> formList = new ArrayList<>();
 
-		//String sql = "select * from reimbursement_trms where status = 'approveA'";
-		String sql = "select * from reimbursement_trms where status = 'pending-1'";
+		String sql = "select * from reimbursement_trms where status = 'approveA'";
 
 		Statement stmt;
 		try {

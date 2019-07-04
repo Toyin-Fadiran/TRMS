@@ -52,7 +52,7 @@ function displayForm (form) {
 		"Course Cost: " + form.course_cost + "<br>" +
         "Grading Format: " + form.grading_format + "<br>" +
         "form time" + form.form_time + "<br>" +
-        "Proof of PASS: " + form.status
+        "Proof of PASS: " + form.proof
 
 	document.getElementById("my-form").innerHTML = formString;
 }

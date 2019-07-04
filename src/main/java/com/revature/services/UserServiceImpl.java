@@ -86,10 +86,12 @@ public class UserServiceImpl implements UserService {
 		Double newAvail;
 
 		Double getPend = getPending(employeeid);
+		
+		Double getAward = getAwarded(employeeid); 
 
-		Double oldAvail = getAvailable(employeeid);
+		//Double oldAvail = getAvailable(employeeid);
 
-		newAvail = user.getTotal() - getPend;
+		newAvail = user.getTotal() - getPend - getAward;
 
 		udi.updateAvailable(newAvail, employeeid);
 	}
@@ -97,6 +99,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Double getPending(Integer userid) {
 		return udi.getPending(userid);
+	}
+	
+	@Override
+	public Double getAwarded(Integer userid) {
+		return udi.getAwarded(userid);
 	}
 
 	@Override
@@ -126,14 +133,15 @@ public class UserServiceImpl implements UserService {
 		
 		System.out.println("useris " + userID);
 
-		if (costDB >= availableDB) {
+		if (pendingDB >= availableDB) {
 			award += availableDB;
 		} else {
-			award += costDB;
+			award += pendingDB;
 		}
 
 		System.out.println("2nd award "+award);
-		Double newpendingReturn = pendingDB - award;
+		//Double newpendingReturn = pendingDB - award;
+		Double newpendingReturn = user.getTotal() - availableDB - award;
 		System.out.println("newpendingReturn "+newpendingReturn);
 		
 		addFinalPending(newpendingReturn, userID);

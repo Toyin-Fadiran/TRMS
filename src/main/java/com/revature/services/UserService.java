@@ -32,4 +32,6 @@ public interface UserService {
 	
 	
 	public void addFinalPending(Double pending, Integer userid);
+	
+	public Double getAwarded(Integer userid);
 }
