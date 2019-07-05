@@ -2,14 +2,6 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>TRMS</display-name>
   <servlet>
-    <servlet-name>hellowWorldServlet</servlet-name>
-    <servlet-class>com.revature.servlets.HelloWorldServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>hellowWorldServlet</servlet-name>
-    <url-pattern>/hello</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>loginServlet</servlet-name>
     <servlet-class>com.revature.servlets.LoginServlet</servlet-class>
   </servlet>
@@ -24,14 +16,6 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>homeServlet</servlet-name>
-    <servlet-class>com.revature.servlets.HomeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>homeServlet</servlet-name>
-    <url-pattern>/home</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>formServlet</servlet-name>
