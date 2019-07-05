@@ -1,0 +1,12 @@
+html {
+	padding: 0% 5%;
+
+	font-family: Rockwell Extra Bold,Rockvwell Bold, monospace;
+	
+}
+
+.floatingdiv {
+	border: 1px black;
+	box-shadow: 2.5px 5px darkgray;
+	padding: 5%;
+}
