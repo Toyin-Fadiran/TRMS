@@ -51,8 +51,10 @@ public class BencoServlet extends HttpServlet {
 			return;
 		}
 
-		System.out.println(name.substring(1));
+		
 		Integer id = Integer.parseInt(name.substring(1));
+		
+		//
 		ReimburseForm a = rd.getFormById(id);
 
 		ObjectMapper om = new ObjectMapper();
@@ -67,7 +69,7 @@ public class BencoServlet extends HttpServlet {
 		
 		String formString = om.writeValueAsString(a);
 		
-		System.out.println("this is "+formString);
+		
 		response.getWriter().write(formString);
 
 		
@@ -96,7 +98,7 @@ public class BencoServlet extends HttpServlet {
 
 		if (status.equals(ap)) {
 			rd.bencoApproveForm(fid);
-			response.getWriter().write("Form approved");
+		
 			response.getWriter().write("<h1>Form Successfully Approved!</h1>" + " <br><a href=\"bencoform.html\">Benco Form Approval</a><br><a href=\"logout\">logout</a>");
 		} else {
 			System.out.println("hello");

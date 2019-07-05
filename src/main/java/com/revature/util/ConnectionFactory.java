@@ -37,10 +37,10 @@ public class ConnectionFactory {
 			user = prop.getProperty("user");
 			password = prop.getProperty("password");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("ConnectionFactory:::FileNotFoundException");
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("ConnectionFactory:::IOException");
 			e.printStackTrace();
 		}
 	}
@@ -54,15 +54,19 @@ public class ConnectionFactory {
 			//System.out.println("password -> " + password);
 			Class.forName("org.postgresql.Driver");
 			conn = DriverManager.getConnection(url, user, password);
-			System.out.println("hello");
 			
+			if(conn == null) {
+				throw new RuntimeException("Failed to establish DB connection");
+			}
+			
+			System.out.println("ConnectionFactory:::Application Properties Parsed. Postgres DB connected!");
+
 	       } catch (ClassNotFoundException e) {
 	           // TODO Auto-generated catch block
 	           e.printStackTrace();
-	       
-		} catch (SQLException e) {
-			System.out.println("Faild to make DB Connection");
-		}
+	       } catch (SQLException e) {
+	    	   System.out.println("Faild to make DB Connection");
+	       }
 		
 		return conn;
 		
