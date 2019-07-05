@@ -10,16 +10,24 @@
 	
 </head>
 <body>
+<header>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="cropschool.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+    EMPLOYEE INTRANET
+  </a>
+</nav>
+</header>
     <h1>LOGIN PAGE</h1>
         <form action="login" method="post">
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputUserName">Username</label>
-                    <input type="text" class="form-control" name="username" id="inputUserName" placeholder="Username here">
+                    <input type="text" class="form-control" name="username" id="inputUserName" placeholder="Username here" required>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="Password here">
+                    <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="Password here" required>
                   </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Sign in</button>

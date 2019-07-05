@@ -96,7 +96,7 @@ public class FinalBencoServlet extends HttpServlet {
 			
 			
 			rd.bencoFinalApproveForm(fid);
-			response.getWriter().write("Form approved");
+			response.getWriter().write("<h1>Form Successfully Approved!</h1>" + " <br><a href=\"finalbencoform.html\">Final Benco Approval</a><br><a href=\"logout\">logout</a>");
 			
 			
 			

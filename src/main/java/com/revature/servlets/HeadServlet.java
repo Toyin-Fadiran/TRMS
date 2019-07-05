@@ -101,7 +101,7 @@ public class HeadServlet extends HttpServlet {
 		
 		if (status.equals(ap)) {
 			rd.headApproveForm(fid);
-			response.getWriter().write("Form approved");
+			response.getWriter().write("<h1>Form Successfully Approved!</h1>" + " <br><a href=\"headform.html\">Dept. Head Approval</a><br><a href=\"logout\">logout</a>");
 		} else {
 			System.out.println("hello");
 		}

@@ -73,30 +73,26 @@ public class SupervisorServlet extends HttpServlet {
 		
 		
 		ObjectMapper om = new ObjectMapper();
-		//2019-06-28
+		
 		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		om.setDateFormat(df);
 		
 		
-		//response.getWriter().write
-	
-		//String dateString = om.writeValueAsString(a.getEnddate());
+		
+		
 		String formString = om.writeValueAsString(a);
-		//String total = formString + startDate + endDate;
+		
 		System.out.println("this is "+formString);
 		response.getWriter().write(formString);
 		
-		//om.setd
+	
 		
 		
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession sess = request.getSession(false);
@@ -116,16 +112,15 @@ public class SupervisorServlet extends HttpServlet {
 		
 		if (status.equals(ap)) {
 			rd.supervisorApproveForm(fid);
-		//	response.getWriter().write("Form approved");
+		
 			response.getWriter().write("<h1>Form Successfully Approved!</h1>" + " <br><a href=\"formfind.html\">Supervisor approval</a><br><a href=\"logout\">logout</a>");
-//			resp.getWriter().write("<h1>Welcome " + u.getTitle()
-//			+ " </h1><br><a href=\"rform.html\">fill form</a><br> <a href=\"formupdate.html\">Update Forms<br><a href=\"logout\">logout</a>");
+
 		
 		} else {
 			System.out.println("hello");
 		}
 		
-		//User user = rd.loginUser(username, password);
+	
 		
 		
 		

@@ -97,6 +97,7 @@ public class BencoServlet extends HttpServlet {
 		if (status.equals(ap)) {
 			rd.bencoApproveForm(fid);
 			response.getWriter().write("Form approved");
+			response.getWriter().write("<h1>Form Successfully Approved!</h1>" + " <br><a href=\"bencoform.html\">Benco Form Approval</a><br><a href=\"logout\">logout</a>");
 		} else {
 			System.out.println("hello");
 		}

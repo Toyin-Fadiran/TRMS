@@ -1,5 +1,9 @@
 package com.revature.dao;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,6 +36,29 @@ public class UserDaoImpl implements UserDao {
 
 		return userList;
 
+	}
+	
+	public void insertImage() {
+		
+		try {
+		File file = new File("myimage.gif");
+		FileInputStream fis = new FileInputStream(file);
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO images_trms VALUES (?, ?)");
+		ps.setString(1, file.getName());
+		ps.setBinaryStream(2, fis, file.length());
+		ps.executeUpdate();
+		ps.close();
+		fis.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

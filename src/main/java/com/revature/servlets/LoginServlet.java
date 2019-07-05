@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
 
 			} else {
 				resp.getWriter().write("<h1>Welcome " + u.getTitle()
-				+ " </h1><br><a href=\"rform.html\">fill form</a><br> <a href=\"formupdate.html\">Update Forms<br><a href=\"logout\">logout</a>");
+				+ " </h1><br><h3><a href=\"rform.html\">fill form</a></h3><br> <h3><a href=\"formupdate.html\">Update Forms</h3><br><h3><a href=\"logout\">logout</a></h3>");
 			}
 		}
 
